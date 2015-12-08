@@ -1,3 +1,4 @@
+var Camera = require('./camera.js');
 var Vertex4 = require('../math/vertex4.js');
 var MatrixHelper = require('../math/matrix-helper.js');
 
@@ -15,6 +16,7 @@ class Graphics {
     this.canvas.height = this.height;
     this.canvas.width = this.width;
     this.perspectiveM = new MatrixHelper().getPerspectiveM(90, this.width / this.height, 1, 10);
+    this.camera = new Camera(new Vertex4(5, 3, 3, 1), new Vertex4(0, 0, -1, 1), new Vertex4(0, 1, 0, 1));
   }
 
   drawLine(x1, y1, x2, y2) {
@@ -38,7 +40,7 @@ class Graphics {
   }
 
   getPerspectiveM() {
-    return this.perspectiveM;
+    return this.perspectiveM.multiplyMM(this.camera.matrix);
   }
 }
 
