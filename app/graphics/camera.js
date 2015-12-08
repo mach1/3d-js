@@ -2,9 +2,16 @@ var Matrix4 = require('../math/matrix4.js');
 
 class Camera {
   constructor(eyeV, targetV, upV) {
-    this.zAxis = eyeV.subtractV(targetV);
+    this.eyeV = eyeV;
+    this.targetV = targetV;
+    this.upV = upV;
+    this.matrix = this.getMatrix();
+  }
+
+  getMatrix() {
+    this.zAxis = this.eyeV.subtractV(this.targetV);
     this.zAxis = this.zAxis.normalize();
-    this.xAxis = upV.multiplyV(this.zAxis);
+    this.xAxis = this.upV.multiplyV(this.zAxis);
     this.xAxis = this.xAxis.normalize();
     this.yAxis = this.zAxis.multiplyV(this.xAxis);
     var orientation = new Matrix4([
@@ -18,10 +25,12 @@ class Camera {
       1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
-      -eyeV.coordinates[0], -eyeV.coordinates[1], -eyeV.coordinates[2], 1
+      -this.eyeV.coordinates[0], -this.eyeV.coordinates[1], -this.eyeV.coordinates[2], 1
     ]);
-    
-    this.matrix = orientation.multiplyMM(translation);
+
+    return orientation.multiplyMM(translation);
+
+
   }
 }
 

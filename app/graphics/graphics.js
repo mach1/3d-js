@@ -1,6 +1,7 @@
 var Camera = require('./camera.js');
 var Vertex4 = require('../math/vertex4.js');
 var MatrixHelper = require('../math/matrix-helper.js');
+var Cube = require('../models/cube.js');
 
 class Graphics {
  
@@ -16,7 +17,23 @@ class Graphics {
     this.canvas.height = this.height;
     this.canvas.width = this.width;
     this.perspectiveM = new MatrixHelper().getPerspectiveM(90, this.width / this.height, 1, 10);
-    this.camera = new Camera(new Vertex4(5, 3, 3, 1), new Vertex4(0, 0, -1, 1), new Vertex4(0, 1, 0, 1));
+    this.camera = new Camera(new Vertex4(5, 3, 3, 1), new Vertex4(0, 0, 0, 1), new Vertex4(0, 1, 0, 1));
+    this.cube = new Cube(new Vertex4(0, 0, 0, 0), 0.2);
+
+    requestAnimationFrame(this.render.bind(this));
+  }
+
+  render(timeStamp) {
+    this.clear();
+    this.camera.eyeV = new Vertex4(Math.sin(timeStamp / 1000), -5, Math.cos(timeStamp / 1000), 1);
+    this.cube.render(this);
+    setTimeout(function() {
+      requestAnimationFrame(this.render.bind(this));
+    }.bind(this), 1000 / 60);
+  }
+
+  clear() {
+    this.context.clearRect(0, 0, this.width, this.height);
   }
 
   drawLine(x1, y1, x2, y2) {
@@ -40,7 +57,7 @@ class Graphics {
   }
 
   getPerspectiveM() {
-    return this.perspectiveM.multiplyMM(this.camera.matrix);
+    return this.perspectiveM.multiplyMM(this.camera.getMatrix());
   }
 }
 
