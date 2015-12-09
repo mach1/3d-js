@@ -18,14 +18,14 @@ class Graphics {
     this.canvas.width = this.width;
     this.perspectiveM = new MatrixHelper().getPerspectiveM(90, this.width / this.height, 1, 10);
     this.camera = new Camera(new Vertex4(5, 3, 3, 1), new Vertex4(0, 0, 0, 1), new Vertex4(0, 1, 0, 1));
-    this.cube = new Cube(new Vertex4(0, 0, 0, 0), 0.2);
+    this.cube = new Cube(new Vertex4(0, 0, 0, 1), 0.5);
 
     requestAnimationFrame(this.render.bind(this));
   }
 
   render(timeStamp) {
     this.clear();
-    this.camera.eyeV = new Vertex4(Math.sin(timeStamp / 1000), -5, Math.cos(timeStamp / 1000), 1);
+    this.camera.eyeV = new Vertex4(Math.cos(timeStamp / 1000), -1, Math.sin(timeStamp / 1000), 1);
     this.cube.render(this);
     setTimeout(function() {
       requestAnimationFrame(this.render.bind(this));

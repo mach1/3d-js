@@ -2,7 +2,7 @@ var Model = require('./model.js');
 var Vertex4 = require('../math/vertex4.js');
 
 class Cube extends Model {
-  constructor(position = new Vertex4(0, 0, 0, 0), size = 1) {
+  constructor(position = new Vertex4(0, 0, 0, 1), size = 1) {
     super(position, size);
     var halfSize = size / 2;
 
