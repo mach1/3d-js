@@ -13,10 +13,10 @@ class Matrix4 {
   }
 
   multiplyVertex4(vertex4) {
-    return this.matrix.map(function(i, index) {
+    return this.matrix.map((i, index) => {
       return i * vertex4.asArray()[(index % 4)]
-    }).reduce(function(vector, i, index) {
-      var vectorIndex = Math.floor(index / 4);
+    }).reduce((vector, i, index) => {
+      let vectorIndex = Math.floor(index / 4);
       vector.asArray()[vectorIndex] = vector.asArray()[vectorIndex] + i;
       return vector;
     }, new Vertex4());
@@ -39,12 +39,12 @@ class Matrix4 {
     }
 
     function getDotProduct(vector1, vector2) {
-      return vector1.reduce(function(sum, value, index) {
+      return vector1.reduce((sum, value, index) => {
         return sum + (value * vector2[index])
       }, 0);
     }
 
-    return new Matrix4(this.matrix.map(function(value, index, matrixArr) {
+    return new Matrix4(this.matrix.map((value, index, matrixArr) => {
       var row = getRowByIndex(matrixArr, index);
       var column = getColumnByIndex(matrix4.matrix, index);
       return getDotProduct(row, column);
