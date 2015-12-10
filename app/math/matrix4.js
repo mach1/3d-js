@@ -1,4 +1,4 @@
-var Vertex4 = require('./vertex4.js');
+import Vertex4 from './vertex4.js';
 
 var identityM = [
   1, 0, 0, 0,
@@ -7,7 +7,7 @@ var identityM = [
   0, 0, 0, 1
 ];
 
-class Matrix4 {
+export default class Matrix4 {
   constructor(matrix = identityM) {
     this.matrix = matrix;
   }
@@ -51,5 +51,3 @@ class Matrix4 {
     }));
   }
 }
-
-module.exports = Matrix4;

@@ -1,9 +1,9 @@
-var Camera = require('./camera.js');
-var Vertex4 = require('../math/vertex4.js');
-var MatrixHelper = require('../math/matrix-helper.js');
-var Cube = require('../models/cube.js');
+import Camera from './camera.js';
+import Vertex4 from '../math/vertex4.js';
+import MatrixHelper from '../math/matrix-helper.js';
+import Cube from '../models/cube.js';
 
-class Graphics {
+export default class Graphics {
  
   constructor(width, height, canvasId = 'canvas') {
     this.width = width;
@@ -60,5 +60,3 @@ class Graphics {
     return this.perspectiveM.multiplyMM(this.camera.getMatrix());
   }
 }
-
-module.exports = Graphics;

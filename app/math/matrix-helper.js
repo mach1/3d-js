@@ -1,6 +1,6 @@
-var Matrix4 = require('./matrix4.js');
+import Matrix4 from './matrix4.js';
 
-class MatrixHelper {
+export default class MatrixHelper {
   getPerspectiveM(yFovInDegrees, aspect, n, f) {
     var angleInRadians = yFovInDegrees * Math.PI / 180;
     var a = 1 / Math.tan(angleInRadians / 2);
@@ -12,5 +12,3 @@ class MatrixHelper {
     ]);
   }
 }
-
-module.exports = MatrixHelper;

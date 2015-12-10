@@ -1,7 +1,7 @@
-var Vertex4 = require('../math/vertex4.js');
-var Matrix4 = require('../math/matrix4.js');
+import Vertex4 from '../math/vertex4.js';
+import Matrix4 from '../math/matrix4.js';
 
-class Model {
+export default class Model {
   constructor(position = new Vertex4(), size = 1) {
     this.rotationM = new Matrix4();
     this.translationM = new Matrix4([
@@ -25,5 +25,3 @@ class Model {
     });
   }
 }
-
-module.exports = Model;

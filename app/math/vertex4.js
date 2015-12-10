@@ -1,4 +1,4 @@
-class Vertex4 {
+export default class Vertex4 {
   constructor(x = 0, y = 1, z = 1, w = 1) {
     this.x = x;
     this.y = y;
@@ -44,5 +44,3 @@ class Vertex4 {
     );
   }
 }
-
-module.exports = Vertex4;

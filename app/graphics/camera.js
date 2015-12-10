@@ -1,6 +1,6 @@
-var Matrix4 = require('../math/matrix4.js');
+import Matrix4 from '../math/matrix4.js';
 
-class Camera {
+export default class Camera {
   constructor(eyeV, targetV, upV) {
     this.eyeV = eyeV;
     this.targetV = targetV;
@@ -33,5 +33,3 @@ class Camera {
 
   }
 }
-
-module.exports = Camera;
