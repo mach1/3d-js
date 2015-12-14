@@ -1,5 +1,9 @@
 export default class Vertex4 {
   constructor(x = 0, y = 1, z = 1, w = 1) {
+    if (Array.isArray(x)) {
+      this.coordinates = x;
+      return;
+    }
     this.x = x;
     this.y = y;
     this.z = z;
@@ -12,14 +16,13 @@ export default class Vertex4 {
   }
 
   subtractV(vertex4) {
-    var arr1 = this.asArray();
-    var arr2 = vertex4.asArray();
-    var result = arr1.map((i, index) => {
-      return i - arr2[index];
-    });
-    return new Vertex4(
-      result[0], result[1], result[2], 1 
-    );
+    return new Vertex4(this.asArray().map((i, index) => {
+      return i - vertex4.get(index);
+    }));
+  }
+
+  get(index) {
+    return this.coordinates[index];
   }
 
   multiplyV(vertex4) {
