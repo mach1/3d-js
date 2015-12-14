@@ -1,14 +1,10 @@
 export default class Vertex4 {
   constructor(x = 0, y = 1, z = 1, w = 1) {
-    if (Array.isArray(x)) {
-      this.coordinates = x;
-      return;
-    }
-    this.x = x;
-    this.y = y;
-    this.z = z;
-    this.w = w;
-    this.coordinates = [x, y, z, w];
+    this.coordinates = Array.isArray(x) ? x : [x, y, z, w];
+    this.x = this.coordinates[0];
+    this.y = this.coordinates[1];
+    this.z = this.coordinates[2];
+    this.w = this.coordinates[3];
   }
 
   asArray() {
@@ -27,23 +23,20 @@ export default class Vertex4 {
 
   multiplyV(vertex4) {
     return new Vertex4(
-      this.coordinates[1] * vertex4.coordinates[2] - this.coordinates[2] * vertex4.coordinates[1],
-      this.coordinates[2] * vertex4.coordinates[0] - this.coordinates[0] * vertex4.coordinates[2],
-      this.coordinates[0] * vertex4.coordinates[1] - this.coordinates[1] * vertex4.coordinates[0]
+      this.get(1) * vertex4.get(2) - this.get(2) * vertex4.get(1),
+      this.get(2) * vertex4.get(0) - this.get(0) * vertex4.get(2),
+      this.get(0) * vertex4.get(1) - this.get(1) * vertex4.get(0)
     );
   }
 
   len() {
-    return Math.sqrt(Math.pow(this.coordinates[0], 2) + Math.pow(this.coordinates[1], 2) + Math.pow(this.coordinates[2], 2));
+    return Math.sqrt(Math.pow(this.get(0), 2) + Math.pow(this.get(1), 2) + Math.pow(this.get(2), 2));
   }
 
   normalize() {
     var len = this.len();
-    return new Vertex4(
-      this.coordinates[0] / len,
-      this.coordinates[1] / len,
-      this.coordinates[2] / len,
-      1
-    );
+    return new Vertex4(this.asArray().map(i => {
+      return i / len;
+    }));
   }
 }
