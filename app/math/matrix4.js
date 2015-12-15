@@ -25,29 +25,24 @@ export default class Matrix4 {
   multiplyMM(matrix4) {
     function getRowByIndex(matrix, index) {
       var rowNumber = Math.floor(index / 4);
-      return matrix.slice(rowNumber * 4, (rowNumber * 4) + 4);
+      return new Vertex4(matrix.slice(rowNumber * 4, (rowNumber * 4) + 4));
     }
 
     function getColumnByIndex(matrix, index) {
       var columnNumber = index % 4;
-      return [
+
+      return new Vertex4([
         matrix[columnNumber],
         matrix[columnNumber + 4],
         matrix[columnNumber + 8],
         matrix[columnNumber + 12]
-      ];
-    }
-
-    function getDotProduct(vector1, vector2) {
-      return vector1.reduce((sum, value, index) => {
-        return sum + (value * vector2[index])
-      }, 0);
+      ]);
     }
 
     return new Matrix4(this.matrix.map((value, index, matrixArr) => {
       var row = getRowByIndex(matrixArr, index);
       var column = getColumnByIndex(matrix4.matrix, index);
-      return getDotProduct(row, column);
+      return row.dotProduct(column);
     }));
   }
 }

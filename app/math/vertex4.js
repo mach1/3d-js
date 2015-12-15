@@ -33,6 +33,12 @@ export default class Vertex4 {
     return Math.sqrt(Math.pow(this.get(0), 2) + Math.pow(this.get(1), 2) + Math.pow(this.get(2), 2));
   }
 
+  dotProduct(vertex4) {
+    return this.asArray().reduce((sum, value, index) => {
+      return sum + (value * vertex4.get(index))
+    }, 0);
+  }
+
   normalize() {
     var len = this.len();
     return new Vertex4(this.asArray().map(i => {
