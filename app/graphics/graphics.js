@@ -27,9 +27,9 @@ export default class Graphics {
     this.clear();
     this.camera.eyeV = new Vertex4(Math.tan(timeStamp / 2000), -1, Math.tan(timeStamp / 1000), 1);
     this.cube.render(this);
-    setTimeout(function() {
+    setTimeout(() => {
       requestAnimationFrame(this.render.bind(this));
-    }.bind(this), 1000 / 60);
+    }, 1000 / 60);
   }
 
   clear() {
