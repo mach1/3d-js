@@ -9,5 +9,5 @@ graphics.init();
 
 graphics.addModel(new Axis());
 
-var cube = new Cube(new Vertex4(1, 0, 1, 1), 0.2);
+var cube = new Cube(new Vertex4(0, 0, 0, 1), 0.2, 0.2, 0.4);
 graphics.addModel(cube);
