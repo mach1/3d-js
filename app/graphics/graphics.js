@@ -25,8 +25,20 @@ export default class Graphics {
   render(timeStamp) {
     this.clear();
     this.camera.eyeV = new Vertex4(Math.sin(timeStamp / 1000) * 10, 1, Math.cos(timeStamp / 1000) * 10, 1);
+
+    var projectionMatrix = this.perspectiveM;
+    var viewMatrix = this.camera.getMatrix();
     this.models.forEach(model => {
-      model.render(this);
+      // ModelViewProjection matrix
+      var MVP = projectionMatrix.multiplyMM(viewMatrix).multiplyMM(model.getMatrix());
+      model.getVertices().map(vertex => {
+        return MVP.multiplyVertex4(vertex);
+      }).map(this.toScreenCoordinates.bind(this)).forEach((vertex4, index, array) => {
+        if (index % 2 === 0) {
+          var nextVertex = array[index + 1];
+          this.drawLine(vertex4.get(0), vertex4.get(1), nextVertex.get(0), nextVertex.get(1));
+        }
+      });
     });
     setTimeout(() => {
       requestAnimationFrame(this.render.bind(this));
@@ -53,8 +65,7 @@ export default class Graphics {
     var halfHeight = this.height / 2;
     return new Vertex4(
       vertex4.get(0) * halfWidth + halfWidth,
-      // Why is that?
-      vertex4.get(1) * halfHeight,
+      vertex4.get(1) * halfHeight + halfHeight,
       vertex4.get(2),
       vertex4.get(3)
     );

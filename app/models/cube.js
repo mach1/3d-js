@@ -7,43 +7,43 @@ export default class Cube extends Model {
     var halfSize = size / 2;
 
     this.vertices = [
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z - halfSize, 1),
+      new Vertex4(-halfSize, -halfSize, -halfSize, 1),
+      new Vertex4(halfSize, -halfSize, -halfSize, 1),
 
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z - halfSize, 1),
+      new Vertex4(halfSize, -halfSize, -halfSize, 1),
+      new Vertex4(halfSize, halfSize, -halfSize, 1),
 
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z - halfSize, 1),
+      new Vertex4(halfSize, halfSize, -halfSize, 1),
+      new Vertex4(-halfSize, halfSize, -halfSize, 1),
 
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z - halfSize, 1),
-
-
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z + halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z + halfSize, 1),
-
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z + halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z + halfSize, 1),
-
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z + halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z + halfSize, 1),
-
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z + halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z + halfSize, 1),
+      new Vertex4(-halfSize, halfSize, -halfSize, 1),
+      new Vertex4(-halfSize, -halfSize, -halfSize, 1),
 
 
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y - halfSize, position.z + halfSize, 1),
+      new Vertex4(-halfSize, -halfSize, halfSize, 1),
+      new Vertex4(halfSize, -halfSize, halfSize, 1),
 
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y - halfSize, position.z + halfSize, 1),
+      new Vertex4(halfSize, -halfSize, halfSize, 1),
+      new Vertex4(halfSize, halfSize, halfSize, 1),
 
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x + halfSize, position.y + halfSize, position.z + halfSize, 1),
+      new Vertex4(halfSize, halfSize, halfSize, 1),
+      new Vertex4(-halfSize, halfSize, halfSize, 1),
 
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z - halfSize, 1),
-      new Vertex4(position.x - halfSize, position.y + halfSize, position.z + halfSize, 1)
+      new Vertex4(-halfSize, halfSize, halfSize, 1),
+      new Vertex4(-halfSize, -halfSize, halfSize, 1),
+
+
+      new Vertex4(-halfSize, -halfSize, -halfSize, 1),
+      new Vertex4(-halfSize, -halfSize, halfSize, 1),
+
+      new Vertex4(halfSize, -halfSize, -halfSize, 1),
+      new Vertex4(halfSize, -halfSize, halfSize, 1),
+
+      new Vertex4(halfSize, halfSize, -halfSize, 1),
+      new Vertex4(halfSize, halfSize, halfSize, 1),
+
+      new Vertex4(-halfSize, halfSize, -halfSize, 1),
+      new Vertex4(-halfSize, halfSize, halfSize, 1)
     ];
   }
 }

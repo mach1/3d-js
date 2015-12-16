@@ -1,5 +1,5 @@
 export default class Vertex4 {
-  constructor(x = 0, y = 1, z = 1, w = 1) {
+  constructor(x = 0, y = 0, z = 0, w = 1) {
     this.coordinates = Array.isArray(x) ? x : [x, y, z, w];
     this.x = this.coordinates[0];
     this.y = this.coordinates[1];

@@ -12,16 +12,12 @@ export default class Model {
     ]);
   }
 
-  render(graphics) {
-    var tempVertices = this.vertices.map(vertex => {
-      return graphics.getPerspectiveM().multiplyVertex4(vertex);
-    });
-    tempVertices.map(graphics.toScreenCoordinates.bind(graphics))
-    .forEach((vertex4, index, array) => {
-      if (index % 2 === 0) {
-        var vertexArr = vertex4.asArray();
-        graphics.drawLine(vertexArr[0], vertexArr[1], array[index + 1].asArray()[0], array[index + 1].asArray()[1]);
-      }
-    });
+  getMatrix() {
+    return this.translationM;
   }
+
+  getVertices() {
+    return this.vertices;
+  }
+
 }

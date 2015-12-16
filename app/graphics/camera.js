@@ -37,7 +37,5 @@ export default class Camera {
     var orientation = this.getOrientation(this.xAxis, this.yAxis, this.zAxis);
     var translation = this.getTranslation(this.eyeV);
     return orientation.multiplyMM(translation);
-
-
   }
 }
