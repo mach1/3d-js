@@ -1,6 +1,5 @@
 import Graphics from './graphics/graphics.js';
 import Vertex4 from './math/vertex4.js';
-import Camera from './graphics/camera.js';
 import Cube from './models/cube.js';
 import Axis from './models/axis.js';
 
