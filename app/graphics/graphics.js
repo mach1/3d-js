@@ -24,7 +24,8 @@ export default class Graphics {
 
   render(timeStamp) {
     this.clear();
-    this.camera.eyeV = new Vertex4(Math.sin(timeStamp / 1000) * 10, 1, Math.cos(timeStamp / 1000) * 10, 1);
+
+    this.models[1].rotate(timeStamp / 100);
 
     var projectionMatrix = this.perspectiveM;
     var viewMatrix = this.camera.getMatrix();
