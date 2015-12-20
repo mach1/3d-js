@@ -11,4 +11,14 @@ export default class MatrixHelper {
       0, 0, -1, 0
     ]);
   }
+
+  static getRotationMatrix(degrees) {
+    var radians = degrees * Math.PI / 180.0;
+    return new Matrix4([
+      Math.cos(radians), 0, Math.sin(radians), 0,
+      0, 1, 0, 0,
+      -Math.sin(radians), 0, Math.cos(radians), 0,
+      0, 0, 0, 1
+    ]);
+  }
 }
