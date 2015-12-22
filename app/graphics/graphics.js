@@ -22,6 +22,10 @@ export default class Graphics {
     requestAnimationFrame(this.render.bind(this));
   }
 
+  renderLine(fromVertex, toVertex) {
+    this.drawLine(fromVertex.get(0), fromVertex.get(1), toVertex.get(0), toVertex.get(1));
+  }
+
   render(timeStamp) {
     this.clear();
 
@@ -36,8 +40,7 @@ export default class Graphics {
         return MVP.multiplyVertex4(vertex);
       }).map(this.toScreenCoordinates.bind(this)).forEach((vertex4, index, array) => {
         if (index % 2 === 0) {
-          var nextVertex = array[index + 1];
-          this.drawLine(vertex4.get(0), vertex4.get(1), nextVertex.get(0), nextVertex.get(1));
+          this.renderLine(vertex4, array[index + 1]);
         }
       });
     });
